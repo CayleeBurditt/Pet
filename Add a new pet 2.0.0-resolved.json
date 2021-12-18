@@ -1,0 +1,160 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Add a New Pet",
+    "description": "Add a new pet to your store. \n",
+    "contact": {
+      "email": "cayleeburditt@gmail.com"
+    },
+    "license": {
+      "name": "Caylee Burditt",
+      "url": "https://www.instagram.com/harley_go_farley/"
+    },
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://api.chainalysis.com/api/pet",
+      "description": "pet"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "pet",
+      "description": "Add a new pet to your store.",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://cayleepaigeburditt.com"
+      }
+    }
+  ],
+  "paths": {
+    "/pet": {
+      "post": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Add a new pet",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the pet.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "photoUrls",
+            "in": "query",
+            "description": "URL of the photo; we do not accept other forms of media.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Add tags to filter your pets.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "The adoption status of your pet. Values include \"Available\", \"Adoption in Progress\", and \"Adopted\"",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Available",
+                "Adoption in Progress",
+                "Adopted"
+              ]
+            }
+          },
+          {
+            "name": "petAge",
+            "in": "query",
+            "description": "The current age of the pet, measured in years.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "petType",
+            "in": "query",
+            "description": "The type of pet.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "dog",
+                "cat",
+                "rabbit",
+                "turtle"
+              ]
+            }
+          },
+          {
+            "name": "petColor",
+            "in": "query",
+            "description": "The color of the pet.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Error response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "API-Key-Header",
+        "in": "header"
+      }
+    }
+  }
+}
