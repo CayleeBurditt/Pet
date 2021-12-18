@@ -1,0 +1,117 @@
+```json
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "description" : "Add a new pet to your store. \n",
+    "version" : "1.0.0",
+    "title" : "Add a New Pet",
+    "contact" : {
+      "email" : "cayleeburditt@gmail.com"
+    },
+    "license" : {
+      "name" : "Caylee Burditt",
+      "url" : "https://www.instagram.com/harley_go_farley/"
+    }
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/CayleeBurditt3/pet/1.0.0"
+  }, {
+    "url" : "https://petstore.swagger.io/v2"
+  } ],
+  "tags" : [ {
+    "name" : "pet",
+    "description" : "Add a new pet to your store.",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "http://cayleepaigeburditt.com"
+    }
+  } ],
+  "components" : {
+    "securitySchemes" : {
+      "ApiKeyAuth" : {
+        "type" : "apiKey",
+        "in" : "header",
+        "name" : "API-Key-Header"
+      }
+    }
+  },
+  "security" : [ {
+    "ApiKeyAuth" : [ ]
+  } ],
+  "paths" : {
+    "/pet" : {
+      "post" : {
+        "tags" : [ "pet" ],
+        "summary" : "Add a new pet",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "name",
+          "description" : "The name of the pet.",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "in" : "query",
+          "name" : "photoUrls",
+          "description" : "URL of the photo; we do not accept other forms of media.",
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "in" : "query",
+          "name" : "tags",
+          "description" : "Add tags to filter your pets.",
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object"
+            }
+          }
+        }, {
+          "in" : "query",
+          "name" : "status",
+          "description" : "The adoption status of your pet. Values include \"Available\", \"Adoption in Progress\", and \"Adopted\"",
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "Available", "Adoption in Progress", "Adopted" ]
+          }
+        }, {
+          "in" : "query",
+          "name" : "petAge",
+          "description" : "The current age of the pet, measured in years.",
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "in" : "query",
+          "name" : "petType",
+          "description" : "The type of pet.",
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "dog", "cat", "rabbit", "turtle" ]
+          }
+        }, {
+          "in" : "query",
+          "name" : "petColor",
+          "description" : "The color of the pet.",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Error response"
+          },
+          "200" : {
+            "description" : "Successful operation"
+          }
+        }
+      }
+    }
+  }
+}
+```
