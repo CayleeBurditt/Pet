@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://api.chainalysis.com/api/pet",
+      "url": "http://api.chainalysis.com/api/",
       "description": "pet"
     }
   ],
